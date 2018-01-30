@@ -16,7 +16,7 @@
         <div class="no-index">No Index</div>
     </div>
 
-    <li class="site-bio show" style="display:block">
+    <ul class="site-bio show" style="display:block">
         <div class="about-me clearfix">
             <div class="info"><span class="item desc"><h1><?php echo get_theme_mod( 'organization_name_textbox', 'Owned by Chris Punches'); ?></h1></span></div>
             <div class="info"><span class="item desc"><?php echo get_theme_mod( 'organization_summary', 'Makes all the things...'); ?></span></div>
@@ -53,5 +53,30 @@
             );
             ?>
         </ul>
+        <div class="social clearfix"></div>
+    </ul>
+
+    <ul class="site-bio show" style="display:block">
+        <div class="about-me clearfix">
+            <div class="info"><span class="item desc"><h1>Taxonomy</h1></span></div>
+                <?php
+
+                    $tags = get_tags();
+                    $html = '<div class="info">';
+                    foreach ( $tags as $tag ) {
+                        $tag_link = get_tag_link( $tag->term_id );
+
+                        $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='name dark-btn'>";
+                        $html .= "{$tag->name}</a>";
+                    }
+                    $html .= '</div>';
+                    echo $html;
+
+                ?>
+        </div>
+
+    </ul>
+
+
 </div>
 

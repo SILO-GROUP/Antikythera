@@ -1,0 +1,228 @@
+<?php
+add_theme_support( 'post-thumbnails' );
+add_theme_support( 'custom-logo' );
+
+add_image_size('featuredImageCropped', 255, 255, true);
+
+$args = array(
+	'default-color' => '000000',
+	'default-image' => get_template_directory_uri() . '/images/background.jpg',
+);
+add_theme_support( 'custom-background', $args );
+
+
+/**
+ * Adds the Customize page to the WordPress admin area
+ */
+function example_customizer_menu() {
+    add_theme_page( 'Customize', 'Customize', 'edit_theme_options', 'customize.php' );
+}
+add_action( 'admin_menu', 'example_customizer_menu' );
+
+/**
+ * Adds the individual sections, settings, and controls to the theme customizer
+ */
+function copyright_notice( $wp_customize ) {
+	$wp_customize->add_section(
+        	'Intellectual Property',
+        	array(
+			'title' => 'Intellectual Property',
+            		'description' => 'Steal stuff from Chris',
+            		'priority' => 35,
+        	)
+	);
+
+	$wp_customize->add_setting(
+		'copyright_textbox',
+		array(
+    			'default' => '2018 SILO GROUP, LTD',
+		)
+	);
+
+	$wp_customize->add_control(
+		'copyright_textbox',
+		array(
+    			'label' => 'Copyright Notice',
+    			'section' => 'Intellectual Property',
+    			'type' => 'text',
+		)
+	);
+}
+add_action( 'customize_register', 'copyright_notice' );
+
+function sidebar_setup( $wp_customize ) {
+	$section_name = "Sidebar Setup";
+
+    $wp_customize->add_section(
+        $section_name,
+        array(
+            'title' => $section_name,
+            'description' => 'Steal stuff from Chris',
+            'priority' => 35,
+        )
+    );
+
+    $wp_customize->add_setting( 'organization_name_textbox', array( 'default' => 'SILO GROUP, LTD' ) );
+    $wp_customize->add_setting( 'organization_summary', array( 'default' => 'SILO GROUP, LTD' ) );
+    $wp_customize->add_setting( 'nameplate_text', array( 'default' => 'Christopher M. Punches' ) );
+    $wp_customize->add_setting( 'nameplate_url', array( 'default' => 'http://www.silogroup.org' ) );
+    $wp_customize->add_setting( 'news_feed', array( 'default' => 'http://news.silogroup.org' ) );
+    $wp_customize->add_setting( 'github_url', array( 'default' => 'https://github.com/cmpunches' ) );
+    $wp_customize->add_setting( 'linkedin_url', array( 'default' => 'https://www.linkedin.com/in/cmpunches' ) );
+    $wp_customize->add_setting( 'email_address', array( 'default' => 'punches.chris@gmail.com' ) );
+    $wp_customize->add_setting( 'bio_logo', array() );
+
+    $wp_customize->add_control( 'organization_name_textbox', array('label' => 'Organization Name', 'section' => $section_name, 'type' => 'text' ));
+    $wp_customize->add_control( 'organization_summary', array('label' => 'Organization Summary', 'section' => $section_name, 'type' => 'text' ));
+    $wp_customize->add_control( 'nameplate_text', array('label' => 'Nameplate Text', 'section' => $section_name, 'type' => 'text' ));
+    $wp_customize->add_control( 'nameplate_url', array('label' => 'Nameplate Link', 'section' => $section_name, 'type' => 'text' ));
+    $wp_customize->add_control( 'github_url', array('label' => 'Github Profile', 'section' => $section_name, 'type' => 'text' ));
+    $wp_customize->add_control( 'linkedin_url', array('label' => 'LinkedIn Profile', 'section' => $section_name, 'type' => 'text' ));
+    $wp_customize->add_control( 'email_address', array('label' => 'Email Address', 'section' => $section_name, 'type' => 'text' ));
+    $wp_customize->add_control( 'news_feed', array('label' => 'News Feed URL', 'section' => $section_name, 'type' => 'text' ));
+
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'bio_logo',
+            array(
+                'label'      => __( 'Bio Logo', 'Antikythera' ),
+                'section'    => $section_name,
+                'settings'   => 'bio_logo'
+            )
+        )
+    );
+
+}
+add_action( 'customize_register', 'sidebar_setup' );
+
+function titles_setup( $wp_customize ) {
+    $section_name = "Titles Theming";
+
+    $wp_customize->add_section(
+        $section_name,
+        array(
+            'title' => $section_name,
+            'description' => 'Title, Subtitle and Footer Theming Options',
+            'priority' => 36,
+        )
+    );
+
+    $wp_customize->add_setting( 'Title Color', array() );
+    $wp_customize->add_setting( 'Title Shadow Color', array() );
+
+    $wp_customize->add_setting( 'Subtitle Color', array() );
+    $wp_customize->add_setting( 'Subtitle Shadow Color', array() );
+
+    $wp_customize->add_setting( 'Footer Color', array() );
+    $wp_customize->add_setting( 'Footer Shadow Color', array() );
+
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+            'Title Color',
+            array(
+                'label'      => __('Title Color', 'Antikythera' ),
+                'section'    => $section_name,
+                'settings'   => 'Title Color',
+            )		)    );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+        'Title Shadow Color',
+        array(
+            'label'      => __('Title Shadow Color', 'Antikythera' ),
+            'section'    => $section_name,
+            'settings'   => 'Title Shadow Color',
+        )		)    );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+        'Subtitle Color',
+        array(
+            'label'      => __('Subtitle Color', 'Antikythera' ),
+            'section'    => $section_name,
+            'settings'   => 'Subtitle Color',
+        )		)    );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+        'Subtitle Shadow Color',
+        array(
+            'label'      => __('Subtitle Shadow Color', 'Antikythera' ),
+            'section'    => $section_name,
+            'settings'   => 'Subtitle Shadow Color',
+        )		)    );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+        'Footer Color',
+        array(
+            'label'      => __('Footer Color', 'Antikythera' ),
+            'section'    => $section_name,
+            'settings'   => 'Footer Color',
+        )		)    );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+        'Footer Shadow Color',
+        array(
+            'label'      => __('Footer Shadow Color', 'Antikythera' ),
+            'section'    => $section_name,
+            'settings'   => 'Footer Shadow Color',
+        )		)    );
+}
+add_action( 'customize_register', 'titles_setup' );
+function custom_titles() {
+    $title_color = get_theme_mod( 'Title Color' );
+    $title_color_s = get_theme_mod( 'Title Shadow Color' );
+
+    $subtitle_color = get_theme_mod( 'Subtitle Color' );
+    $subtitle_color_s = get_theme_mod( 'Subtitle Shadow Color' );
+
+    $footer_color  = get_theme_mod( 'Footer Color' );
+    $footer_color_s= get_theme_mod( 'Footer Shadow Color' );
+
+	?>
+
+	<style type="text/css">
+		.header_title_logo {
+			color: <?php echo $title_color ?>;
+			text-shadow: 2px 2px 5px <?php echo $title_color_s ?>;
+		}
+
+		.header_subtitle_logo {
+			color: <?php echo $subtitle_color; ?>;
+			text-shadow: 2px 2px 5px <?php echo $subtitle_color_s; ?>;
+		}
+
+		.legal {
+			font-size: 24px;
+			color: <?php echo $footer_color; ?>;
+			text-shadow: 2px 2px 5px <?php echo $footer_color_s; ?>;
+		}
+	</style>
+    <?php
+
+}
+
+add_action( 'wp_head', 'custom_titles' );
+
+function register_my_menu() {
+    register_nav_menu('header-menu',__( 'Header Menu' ));
+}
+add_action( 'init', 'register_my_menu' );
+
+
+
+function add_menuclass($ulclass) {
+    return preg_replace('/<a /', '<a class="dark-btn"', $ulclass);
+}
+add_filter('wp_nav_menu','add_menuclass');
+
+function theme_prefix_setup() {
+
+    add_theme_support( 'custom-logo', array(
+        'height'      => 200,
+        'width'       => 350,
+        'flex-width' => true,
+    ) );
+
+}
+add_action( 'after_setup_theme', 'theme_prefix_setup' );
+?>

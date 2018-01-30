@@ -1486,6 +1486,10 @@ ol.commentlist li.thread-even {}
 ol.commentlist li.thread-odd {}
 
 
+.featured-image {
+    width: 100%;
+}
+
 #submit {
     font-family: Arial;
     color: #ffffff;

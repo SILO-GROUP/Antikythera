@@ -28,6 +28,7 @@ get_header();
                 <div class="article-meta"><?php echo get_the_date('Y-m-d'); ?></div>
             </header>
 
+
             <?php
                 $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'featuredImageFull');
             ?>
@@ -46,8 +47,9 @@ get_header();
                 </div>
             <?php endif; ?>
 
-
-            <p align="center"><img src="<?php echo $featured_image; ?>"></p>
+            <div class="featured-image">
+                <p align="center"><img class="featured-image" src="<?php echo $featured_image; ?>"></p>
+            </div>
 
             <div class="article-entry" itemprop="articleBody">
                 <?php

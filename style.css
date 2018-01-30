@@ -1432,6 +1432,10 @@ pre code{
     text-shadow: 2px 2px 5px red;
 }
 
+.aligncenter {
+    position: center;
+}
+
 .legal:hover {
     color: #FFFFFF;
     font-size: 24px;

@@ -238,7 +238,7 @@ a{
     color:#414141;
     text-decoration:none;
     transition:all .24s ease;
-    text-shadow: 1px 1px 1px #FFFFFF;
+//    text-shadow: 1px 1px 1px #FFFFFF;
 }
 a:hover{
     text-decoration:none

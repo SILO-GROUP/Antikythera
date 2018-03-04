@@ -30,7 +30,7 @@ get_header();
 
 
             <?php
-            $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'featuredImageFull');
+                $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'featuredImageFull');
             ?>
 
             <?php if (get_the_tags()) :?>
@@ -67,39 +67,6 @@ get_header();
 
 
 
-                <?php
-                $next_post = get_next_post();
-                $prev_post = get_previous_post();
-                if (!empty ($prev_post)): $prev_thumb = get_the_post_thumbnail_url($prev_post->ID);
-                ?>
-                <div class="prev-next">
-                        <span class="previous">
-                            <ul class="post-list">
-
-                                <li class="post-item grid-item" style="background-image: url(<?php echo $prev_thumb; ?>);">
-                                    <a class="post-link" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>">
-                                        <h3 class="post-title"><?php echo esc_attr( $prev_post->post_title ); ?></h3>
-                                        <div class="post-meta"><?php echo esc_attr( $prev_post->post_date  ); ?></div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </span>
-                    <?php endif; ?>
-
-                    <?php if (!empty( $next_post )): $next_thumb = get_the_post_thumbnail_url($next_post->ID); ?>
-                        <span class="next">
-                                <ul class="post-list">
-                                    <li class="post-item grid-item" style="background-image: url(<?php echo $next_thumb; ?>);">
-                                        <a class="post-link" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>">
-                                            <h3 class="post-title"><?php echo esc_attr( $next_post->post_title ); ?></h3>
-                                            <div class="post-meta"><?php echo esc_attr( $next_post->post_date  ); ?></div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </span>
-                    <?php endif; ?>
-
-                </div>
             </div>
 
         </article>
@@ -111,7 +78,7 @@ get_header();
 
     </main>
 
-    <?php get_footer(); ?>
+<?php get_footer(); ?>
 
     <script>
         document.getElementById("loading-bar").style.width = "80%"
@@ -132,3 +99,4 @@ get_template_part( 'loader', get_post_format() );
 </body>
 
 </html>
+

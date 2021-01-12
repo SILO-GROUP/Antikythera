@@ -12,11 +12,6 @@ get_background_image();
     </div>
 
     <script>
-        document.getElementById("loading-bar").style.width = "20%"
-    </script>
-
-
-    <script>
         document.getElementById("loading-bar").style.width = "40%"
     </script>
 

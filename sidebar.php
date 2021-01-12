@@ -12,10 +12,6 @@
         </a>
     </div>
 
-    <div class="site-toc" style="display:none">
-        <div class="no-index">No Index</div>
-    </div>
-
     <ul class="site-bio show" style="display:block">
         <div class="about-me clearfix">
             <div class="info"><span class="item desc"><h1><?php echo get_theme_mod( 'organization_name_textbox', 'Owned by Chris Punches'); ?></h1></span></div>
@@ -40,38 +36,39 @@
 
         </div>
 
-        <ul class="clearfix">
-            <?php
-            wp_nav_menu(
-                array(
-                    'theme_location'    => 'header-menu',
-                    'container'         => false,
-                    'menu_class'        => 'clearfix my-menu-item',
-                    'items_wrap' => '%3$s',
-
-                )
-            );
-            ?>
-        </ul>
         <div class="social clearfix"></div>
     </ul>
 
     <ul class="site-bio show" style="display:block">
         <div class="about-me clearfix">
-            <div class="info"><span class="item desc"><h1>Taxonomy</h1></span></div>
+            <div class="info"><span class="item desc"><h1>Navigation</h1></span></div>
+            <div class="info">
+                <ul class="clearfix">
+                    <?php
+                    wp_nav_menu(
+                        array(
+                            'theme_location'    => 'header-menu',
+                            'container'         => false,
+                            'menu_class'        => 'clearfix my-menu-item',
+                            'items_wrap' => '%3$s',
+
+                        )
+                    );
+                    ?>
+                </ul>
+            </div>
                 <?php
-
-                    $tags = get_tags();
-                    $html = '<div class="info">';
-                    foreach ( $tags as $tag ) {
-                        $tag_link = get_tag_link( $tag->term_id );
-
-                        $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='name dark-btn'>";
-                        $html .= "{$tag->name}</a>";
-                    }
-                    $html .= '</div>';
-                    echo $html;
-
+#                    $tags = get_tags();
+#                    $html = '<div class="info">';
+#                    foreach ( $tags as $tag ) {
+#                        $tag_link = get_tag_link( $tag->term_id );
+#
+#                        $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='name dark-btn'>";
+#                        $html .= "{$tag->name}</a>";
+#                    }
+#                    $html .= '</div>';
+#                    echo $html;
+#
                 ?>
         </div>
 

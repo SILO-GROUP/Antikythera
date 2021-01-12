@@ -13,9 +13,6 @@ get_header();
 
     <script>
         document.getElementById("loading-bar").style.width = "20%"
-    </script>
-
-    <script>
         document.getElementById("loading-bar").style.width = "40%"
     </script>
 
@@ -25,7 +22,10 @@ get_header();
 
             <header class="article-header">
                 <h1 class="article-title" itemprop="name"><?php the_title(); ?></h1>
-                <div class="article-meta"><?php echo get_the_date('Y-m-d'); ?></div>
+                <?php
+                $get_theme_date_opt = get_theme_mod( 'article_shows_date' );
+                if ($get_theme_date_opt) { ?>
+                <div class="article-meta"><?php echo get_the_date('Y-m-d'); ?></div><?php } ?>
             </header>
 
 
@@ -48,7 +48,7 @@ get_header();
             <?php endif; ?>
 
             <div class="featured-image">
-                <p align="center"><img class="featured-image" src="<?php echo $featured_image; ?>"></p>
+                <p align="center"><img height="30%" width="30%" class="featured-image" src="<?php echo $featured_image; ?>"></p>
             </div>
 
             <div class="article-entry" itemprop="articleBody">
@@ -79,7 +79,9 @@ get_header();
                                 <li class="post-item grid-item" style="background-image: url(<?php echo $prev_thumb; ?>);">
                                     <a class="post-link" href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>">
                                         <h3 class="post-title"><?php echo esc_attr( $prev_post->post_title ); ?></h3>
-                                        <div class="post-meta"><?php echo esc_attr( $prev_post->post_date  ); ?></div>
+                                        <?php
+                                        $get_theme_date_opt = get_theme_mod( 'article_shows_date' );
+                                        if ($get_theme_date_opt) { ?><div class="post-meta"><?php echo esc_attr( $prev_post->post_date  ); ?></div><?php } ?>
                                     </a>
                                 </li>
                             </ul>

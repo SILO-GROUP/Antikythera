@@ -94,7 +94,10 @@ get_header();
                                     <li class="post-item grid-item" style="background-image: url(<?php echo $next_thumb; ?>);">
                                         <a class="post-link" href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>">
                                             <h3 class="post-title"><?php echo esc_attr( $next_post->post_title ); ?></h3>
-                                            <div class="post-meta"><?php echo esc_attr( $next_post->post_date  ); ?></div>
+                    <?php
+                                        $get_theme_date_opt = get_theme_mod( 'article_shows_date' );
+                                        if ($get_theme_date_opt) {
+                                            <div class="post-meta"><?php echo esc_attr( $next_post->post_date  ); ?></div><?php } ?>
                                         </a>
                                     </li>
                                 </ul>

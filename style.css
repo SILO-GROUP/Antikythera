@@ -542,8 +542,8 @@ pre code{
 }
 
 // hover over article border color
-.post-list>li .post-link:hover{
-    border-color: #d371ff;
+   .post-list>li .post-link:hover{
+       border-color: #d371ff;
        text-shadow: 2px 2px 5px blue;
 
    }

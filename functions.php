@@ -124,8 +124,6 @@ function art_ops( $wp_customize ) {
             )
         )
     );
-
-    print("art_ops is executing");
 }
 add_action( 'customize_register', 'art_ops');
 

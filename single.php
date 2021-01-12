@@ -124,7 +124,7 @@ get_header();
 </div>
 
 <?php
-get_sidebar();
+//get_sidebar();
 get_template_part( 'loader', get_post_format() );
 ?>
 

@@ -97,7 +97,7 @@ get_header();
                     <?php
                                         $get_theme_date_opt = get_theme_mod( 'article_shows_date' );
                                         if ($get_theme_date_opt) {
-                                            <div class="post-meta"><?php echo esc_attr( $next_post->post_date  ); ?></div><?php } ?>
+                                            ?><div class="post-meta"><?php echo esc_attr( $next_post->post_date  ); ?></div><?php } ?>
                                         </a>
                                     </li>
                                 </ul>
